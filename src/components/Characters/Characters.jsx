@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
@@ -43,7 +44,11 @@ const Characters = () => {
         return (
           <div key={character.id}>
             <img src={character.image} alt={character.name} />
-            <h3> {character.name} </h3>
+            <h3>
+              {" "}
+              {character.name} -{" "}
+              <Link to={`/character/${character.id}`}> Details </Link>{" "}
+            </h3>
           </div>
         );
       })}
