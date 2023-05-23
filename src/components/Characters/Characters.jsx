@@ -1,6 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import "./Characters.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
+// Components
+import Character from "../Character/Character";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
@@ -29,29 +33,29 @@ const Characters = () => {
   }
 
   return (
-    <div>
-      <h1>TESTING LIST</h1>
-
-      <div>
-        <button disabled={page <= 1} onClick={() => setPage(page - 1)}>
+    <div className="characters-container">
+      <div className="characters-buttons">
+        <button
+          className="character-btn"
+          disabled={page <= 1}
+          onClick={() => setPage(page - 1)}
+        >
           Prev
         </button>
-        <button disabled={page >= 42} onClick={() => setPage(page + 1)}>
+        <p> Page {page} </p>
+        <button
+          className="character-btn"
+          disabled={page >= 42}
+          onClick={() => setPage(page + 1)}
+        >
           Next
         </button>
       </div>
-      {characters.map((character) => {
-        return (
-          <div key={character.id}>
-            <img src={character.image} alt={character.name} />
-            <h3>
-              {" "}
-              {character.name} -{" "}
-              <Link to={`/character/${character.id}`}> Details </Link>{" "}
-            </h3>
-          </div>
-        );
-      })}
+      <div className="characters">
+        {characters.map((character) => {
+          return <Character key={character.id} character={character} />;
+        })}
+      </div>
     </div>
   );
 };
