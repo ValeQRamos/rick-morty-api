@@ -1,9 +1,10 @@
+import './Homepage.css'
 import Characters from "../../components/Characters/Characters";
 
 const Homepage = () => {
   return (
-    <div>
-      <h1>All Characters</h1>
+    <div className="container">
+      <h1 className="title">All Rick and Morty Characters</h1>
       <Characters />
     </div>
   );
